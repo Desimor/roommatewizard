@@ -1,0 +1,22 @@
+{
+  "name": "roommatewizard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Desimor/roommatewizard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Desimor/roommatewizard/issues"
+  },
+  "homepage": "https://github.com/Desimor/roommatewizard#readme"
+}

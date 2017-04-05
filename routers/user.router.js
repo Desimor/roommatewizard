@@ -95,7 +95,7 @@ router.put('/users/:id', auth, function(req, res){
         }
     });
 });
-router.deleted('/users/:id', function(req, res){
+router.delete('/users/:id', function(req, res){
     User.remove({_id: req.params.id}, function(err){
         if(err){
             res.status(500).json({

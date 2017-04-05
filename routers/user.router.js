@@ -46,3 +46,67 @@ router.post('/login', function(req, res, next){
         });
     })(req, res, next);
 });
+router.get('/users', function(req, res){
+    User.find({}, function(err, users){
+        if(err){
+            res.status(500).json({
+                msg: err
+            });
+        } else {
+            res.status(200).json({
+                users: users
+            });
+        }
+    });
+});
+router.get('/users/:id', function(req, res){
+    if(req.payload._id !== req.params.id){
+        res.status(403).json({
+            msg: 'Unauthorized'
+        });
+    }
+    User.find({_id: req.params.id}, function(err, users){
+        if(err){
+            res.status(500).json({
+                msg: err
+            });
+        } else {
+            res.status(200).json({
+                users: users
+            });
+        }
+    });
+});
+router.put('/users/:id', auth, function(req, res){
+    if(req.payload._id !== req.params.id){
+        res.status(403).json({
+            msg: 'Unauthorized'
+        });
+    }
+    User.findOneAndUpdate({_id: req.params.id}, req.body, function(err, user){
+        if(err){
+            res.status(500).json({
+                msg: err
+            });
+        } else {
+            res.status(200).json({
+                msg: 'Successfully updated a user!'
+            });
+        }
+    });
+});
+router.deleted('/users/:id', function(req, res){
+    User.remove({_id: req.params.id}, function(err){
+        if(err){
+            res.status(500).json({
+                msg: err
+            });
+        } else {
+            res.status(200).json({
+                msg: 'Successfully deleted a user!'
+            });
+        }
+    });
+});
+
+module.exports = router;

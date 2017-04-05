@@ -96,6 +96,11 @@ router.put('/users/:id', auth, function(req, res){
     });
 });
 router.delete('/users/:id', function(req, res){
+    if(req.payload._id !== req.params.id){
+        res.status(403).json({
+            msg: 'Unauthorized'
+        });
+    }
     User.remove({_id: req.params.id}, function(err){
         if(err){
             res.status(500).json({

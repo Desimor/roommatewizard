@@ -8,6 +8,7 @@ const userRouter = require('./routers/user.router');
 const port = process.env.PORT || 8080;
 const mongoURI = process.env.MONGOURI || require('./secrets').MONGOURI;
 
+require('./config/passport');
 server.use(express.static(__dirname + '/public'));
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: true}));

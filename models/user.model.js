@@ -29,7 +29,7 @@ userSchema.methods.setPassword = function(password){
 userSchema.methods.validPassword = function(passwrod){
     const hash = crypto.pbkdf2Sync(passwrod, this.salt, 1000, 64)
                         .toString('hex');
-    return this.has === hash;
+    return this.hash === hash;
 }
 userSchema.methods.generateJwt = function(){
     const expiration = new Date();

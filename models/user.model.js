@@ -14,10 +14,12 @@ const userSchema = mongoose.Schema({
         required: true
     },
     salt: {
-        type: String
+        type: String,
+        required: true
     },
     hash: {
-        type: String
+        type: String,
+        required: true
     }
 });
 
